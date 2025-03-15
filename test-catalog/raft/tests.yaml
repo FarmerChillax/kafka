@@ -108,6 +108,10 @@ org.apache.kafka.raft.KafkaNetworkChannelTest:
 org.apache.kafka.raft.KafkaRaftClientDriverTest:
 - testShutdown
 - testUncaughtException
+org.apache.kafka.raft.KafkaRaftClientFetchTest:
+- testInvalidMemoryRecords
+- testRandomRecords
+- testReplicationOfHigherPartitionLeaderEpoch
 org.apache.kafka.raft.KafkaRaftClientPreVoteTest:
 - testFollowerGrantsPreVoteIfHasNotFetchedYet
 - testHandleInvalidPreVoteRequestWithOlderEpoch
@@ -390,8 +394,11 @@ org.apache.kafka.raft.MockLogTest:
 - testEmptyAppendNotAllowed
 - testEndOffsetForEpoch
 - testFailToIncreaseLogStartPastHighWatermark
+- testInvalidLeaderEpoch
+- testInvalidMemoryRecords
 - testMetadataValidation
 - testMonotonicEpochStartOffset
+- testRandomRecords
 - testReadMissingSnapshot
 - testReadOutOfRangeOffset
 - testReadRecords
@@ -436,6 +443,8 @@ org.apache.kafka.raft.ProspectiveStateTest:
 - testThreeNodeQuorumVoteRejected
 - testTwoNodeQuorumVoteGranted
 - testTwoNodeQuorumVoteRejected
+org.apache.kafka.raft.QuorumConfigTest:
+- testIllegalConfig
 org.apache.kafka.raft.QuorumStateTest:
 - testCanBecomeFollowerOfNonVoter
 - testCandidateToAnyStateLowerEpoch
@@ -543,6 +552,8 @@ org.apache.kafka.raft.RaftEventSimulationTest:
 - canMakeProgressIfMajorityIsReachable
 - canRecoverAfterAllNodesKilled
 - canRecoverFromSingleNodeCommittedDataLoss
+- leadershipAssignedOnlyOnceWithNetworkPartitionIfThereExistsMajority
+- leadershipWillNotChangeDuringNetworkPartitionIfMajorityStillReachable
 org.apache.kafka.raft.RaftUtilTest:
 - testErrorResponse
 - testFetchRequestV17Compatibility
